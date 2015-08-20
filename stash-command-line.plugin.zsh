@@ -30,7 +30,7 @@ _stash-commad-line ()
 			case $line[1] in		
 				(browse)
 					_arguments \
-						'(-b --branch)'{-b,--branch}'[Open the Stash web ui at the specified branch, tag or commit hash. Defaults to the current branch]:branch:__git_remote_branch_names' \
+						'(-b --branch)'{-b,--branch}'[Open the Stash web ui at the specified branch, tag or commit hash. Defaults to the current branch]:remote-branch:__git_remote_branch_names' \
 						'(-r --remote)'{-r,--remote}'[Open the Stash web ui at the remote repository]:remote:__git_remotes'
 				;;
 				(configure)
