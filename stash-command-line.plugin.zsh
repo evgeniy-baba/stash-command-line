@@ -1,5 +1,7 @@
 # stash-command-line zsh completion
 
+source /usr/local/share/zsh/functions/_git
+
 _stash-commad-line ()
 {
     local curcontext="$curcontext" state line
