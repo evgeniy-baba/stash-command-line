@@ -24,9 +24,25 @@ oh-my-zsh
     # -plugins=(...)
     # +plugins=(... stash-command-line)
     ```
+1. Customize:
 
+    Add group(s) reviewers
+    ```sh
+    $ $EDITOR ~/.zshrc
+
+    # +alias -g @team='@reviewer1 @reviewer2'
+    ```
 
 Usage
 =====
 
+-   Create a pull request from branch 'origin/branch' into branch 'origin/develop' with reviewers from group @team
 
+    ```sh
+    $ sclp origin/branch origin/develop @team
+    ```
+-   Open the Stash web ui for this repository
+
+    ```sh
+    $ sclb
+    ```
