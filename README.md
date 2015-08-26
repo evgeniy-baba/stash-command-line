@@ -4,14 +4,12 @@ stash-command-line plugin adds autocompletion for [stash-command-line tools](htt
 
 Installation
 =========
-
-
 oh-my-zsh
 ------
 1. Go to your custom plugins folder:
 
     ```sh
-    $ cd ${ZSH_CUSTOM1:-$ZSH/custom}/plugins 
+    $ cd ${ZSH_CUSTOM:-$ZSH/custom}/plugins 
     ```
 1. Then clone that repo:
 
@@ -26,7 +24,9 @@ oh-my-zsh
     # -plugins=(...)
     # +plugins=(... stash-command-line)
     ```
+
+
 Usage
-==
+=====
 
 
