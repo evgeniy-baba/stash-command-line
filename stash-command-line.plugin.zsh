@@ -1,3 +1,13 @@
+# aliases
+
+# scl - stash-command-line
+alias scl='stash'
+alias sclp='scl pull-request'
+alias sclb='scl browse'
+alias so='sclb'
+
+# alias -g @team='@reviewer1 @reviewer2'
+
 # stash-command-line zsh completion
 
 source /usr/local/share/zsh/functions/_git
