@@ -37,8 +37,8 @@ _stash-commad-line ()
 
                 (browse)
                 _arguments \
-                    '(-b --branch)-b[Open the Stash web ui at the specified branch, tag or commit hash. Defaults to the current branch]:remote-branch:__git_remote_branch_names' \
-                    '(-r --remote)-r[Open the Stash web ui at the remote repository]:remote:__git_remotes' \
+                    '(-b --branch)-b[Open the Stash web ui at the specified branch, tag or commit hash. Defaults to the current branch]:remote-branch:__scl_git_remote_branch_names' \
+                    '(-r --remote)-r[Open the Stash web ui at the remote repository]:remote:__scl_git_remotes' \
                     $global_options
                 ;;
 
@@ -53,12 +53,12 @@ _stash-commad-line ()
 
                 (pull-request)
                     _arguments \
-                    '::branch:__git_remote_branch_names' \
-                    ':branch:__git_remote_branch_names' \
+                    '::branch:__scl_git_remote_branch_names' \
+                    ':branch:__scl_git_remote_branch_names' \
                     '::reviewers:(@team)' \
                     '(-d --description)-d[Use the following description when creating the pull request]' \
                     '(-T --title)-T[Use the following title when creating the pull request]' \
-                    '(-r --remote)-r[Creates the pull request in the Stash repository specified by the given remote]:remote:__git_remotes' \
+                    '(-r --remote)-r[Creates the pull request in the Stash repository specified by the given remote]:remote:__scl_git_remotes' \
                     '(-o --open)-o[Open the created pull request page in a web browser]' \
                     $global_options
                 ;;
@@ -81,6 +81,33 @@ __subcommands ()
         'help:Display global or [command] help documentation.'
     )
     _describe -t commands 'commands' subcommands
+}
+
+__scl_git_remote_branch_names () {
+    local expl
+    declare -a branch_names
+
+    branch_names=(${${(f)"$(_call_program remote-branch-refs git for-each-ref --format='"%(refname)"' refs/remotes 2>/dev/null)"}#refs/remotes/})
+    __scl_git_command_successful || return
+
+    _wanted branch-names expl branch-name compadd $* - $branch_names
+}
+
+__scl_git_remotes () {
+  local remotes expl
+
+  remotes=(${(f)"$(_call_program remotes git remote 2>/dev/null)"})
+  __scl_git_command_successful || return
+
+  _wanted remotes expl remote compadd "$@" -a - remotes
+}
+
+__scl_git_command_successful () {
+    if (( ${#pipestatus:#0} > 0 )); then
+        _message 'not a git repository'
+        return 1
+    fi
+    return 0
 }
 
 compdef _stash-commad-line stash

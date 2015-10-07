@@ -16,13 +16,13 @@ oh-my-zsh
     ```sh
     $ git clone git@github.com:evgeniy-baba/stash-command-line.git
     ```
-1. Enabling plugins - git and stash-command-line:
+1. Enabling plugin stash-command-line:
 
     ```sh
     $ $EDITOR ~/.zshrc
 
     # -plugins=(...)
-    # +plugins=(... git stash-command-line)
+    # +plugins=(... stash-command-line)
     ```
 1. Customize:
 
