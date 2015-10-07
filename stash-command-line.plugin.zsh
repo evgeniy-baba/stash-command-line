@@ -10,8 +10,6 @@ alias so='sclb'
 
 # stash-command-line zsh completion
 
-source /usr/local/share/zsh/functions/_git
-
 _stash-commad-line ()
 {
     local curcontext="$curcontext" state line
@@ -59,9 +57,9 @@ _stash-commad-line ()
                     ':branch:__git_remote_branch_names' \
                     '::reviewers:(@team)' \
                     '(-d --description)-d[Use the following description when creating the pull request]' \
-                    '(-t --title)-t[Writes your Stash user password to the configuration file. If omitted, password will be prompted to be entered]' \
-                    '(-r --remote)-r[Writes the Stash server url to the configuration file]:remote:__git_remotes' \
-                    '(-o --open)-o[Pull requests will be created in the Stash repository specified by the given remote]' \
+                    '(-T --title)-T[Use the following title when creating the pull request]' \
+                    '(-r --remote)-r[Creates the pull request in the Stash repository specified by the given remote]:remote:__git_remotes' \
+                    '(-o --open)-o[Open the created pull request page in a web browser]' \
                     $global_options
                 ;;
 
