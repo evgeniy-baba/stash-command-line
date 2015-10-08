@@ -2,6 +2,8 @@ stash-command-line autocomplete plugin
 ======================================
 stash-command-line plugin adds autocompletion for [stash-command-line tools](https://bitbucket.org/atlassian/stash-command-line-tools).
 
+![Example](stash-command-line-short.gif)
+
 Installation
 =========
 oh-my-zsh
